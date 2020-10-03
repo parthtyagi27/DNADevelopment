@@ -9,4 +9,4 @@ print(len(test))
 
 with open('DNAseq.txt', 'w') as writer:
     for i in range(50):
-        writer.write("YA")
+        writer.write("ACT")
