@@ -1,7 +1,7 @@
-EXENAME = main
+EXENAME = run
 
 CXX = clang++
-CXXFLAGS = -std=c++0x -g -O0 -Wall -Wextra
+CXXFLAGS = -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
 LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
@@ -9,17 +9,23 @@ LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
 all : $(EXENAME)
 
-$(EXENAME): main.cpp DNA.cpp DNA.h q6.cpp q6.h
-	$(CXX) $(CXXFLAGS) main.cpp DNA.cpp q6.cpp -o $(EXENAME)
+$(EXENAME): run.o DNA.o
+	$(LD) run.o DNA.o $(LDFLAGS) -o $(EXENAME)
 
-test: catchmain.o tests.o main.o
-	$(LD) catchmain.o tests.o main.o $(LDFLAGS) -o test
+run.o : run.cpp DNA.h
+	$(CXX) $(CXXFLAGS) run.cpp
+
+DNA.o : run.cpp DNA.h
+	$(CXX) $(CXXFLAGS) DNA.cpp
+
+test: catch/catchmain.o tests.o 
+	$(LD) catchmain.o tests.o $(LDFLAGS) -o test
 
 catchmain.o : catch/catchmain.cpp catch/catch.hpp
-	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
+	$(CXX) $(CXXFLAGS) catch/catchmain.cpp
 
-tests.o : test/tests.cpp catch/catch.hpp main.cpp DNA.h DNA.cpp
-	$(CXX) $(CXXFLAGS) tests/tests.cpp
+tests.o : test/tests.cpp catch/catch.hpp run.cpp
+	$(CXX) $(CXXFLAGS) test/tests.cpp
 
 clean:
 	rm -f *.o $(EXENAME)
