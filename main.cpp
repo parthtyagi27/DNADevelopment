@@ -47,18 +47,28 @@ int main() {
     int a_diff, b_diff, c_diff = 0;
 
     std::string temp = "";
-    for (int i = 0; i < (int)test.length() - 3; i++) {
-        temp = "";
-        temp = test.substr(i, 4);
-        //for (int j = i; i < test.length() - 4; j+=4) {
-            //iterate through chunks of 4, and slowly exclude the beginning values
-
-        //}
-        int same = checkMatch(str_list, temp);
-        if (same != -1) {
-            count[same]++;
-        }
-        std::cout << same << std::endl;
-    }
     
+    int prev = -1;
+    int max = 0;
+    int same = 0;
+    for (int j = 0; j < 4; j++) {
+        for (int i = j; i < (int)test.length() - 3; i+=4) {
+            temp = "";
+            temp = test.substr(i, 4);
+            same = checkMatch(str_list, temp);
+            if (prev == same && prev > -1) {
+                max++;
+                if (count[same] < max) {
+                    count[same] = max;
+                }
+            } else {
+                max = 0;
+            }
+            //std::cout << same << std::endl;
+            prev = same;
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << count[i] << std::endl;
+    }   
 }

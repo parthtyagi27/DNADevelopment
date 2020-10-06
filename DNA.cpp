@@ -2,5 +2,5 @@
 #include "DNA.h"
 
 namespace DNA {
-    
+
 }
