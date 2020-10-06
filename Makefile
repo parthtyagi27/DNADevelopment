@@ -18,16 +18,16 @@ run.o : run.cpp DNA.h
 DNA.o : run.cpp DNA.h
 	$(CXX) $(CXXFLAGS) DNA.cpp
 
-test: catch/catchmain.o tests.o 
-	$(LD) catchmain.o tests.o $(LDFLAGS) -o test
+test: catch/catchmain.o tests.o DNA.o 
+	$(LD) catchmain.o tests.o DNA.o $(LDFLAGS) -o test
 
 catchmain.o : catch/catchmain.cpp catch/catch.hpp
 	$(CXX) $(CXXFLAGS) catch/catchmain.cpp
 
-tests.o : test/tests.cpp catch/catch.hpp run.cpp
-	$(CXX) $(CXXFLAGS) test/tests.cpp
+tests.o : tests/tests.cpp catch/catch.hpp run.cpp
+	$(CXX) $(CXXFLAGS) tests/tests.cpp
 
 clean:
-	rm -f *.o $(EXENAME)
+	rm -f *.o $(EXENAME) test
 
 	
