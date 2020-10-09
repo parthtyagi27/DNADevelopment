@@ -1,9 +1,11 @@
 #include <iostream>
 #include <cmath>
 #include "DNA.h"
+#include <vector>
 
 using std::cout;
 using std::endl;
+using std::vector;
 
 /**
 Our first program (Gottschling's) [10]
@@ -22,9 +24,11 @@ and how to resolve them [55]
  **/
 
 std::string str_list[] = {"AGAT", "AATG", "TATC"};
-int Alice[] = {5, 2, 8};
-int Bob[] = {3, 7, 4};
-int Charlie[] = {6, 1, 5};
+vector<int> Alice = {5, 2, 8};
+vector<int> Bob = {3, 7, 4};
+vector<int> Charlie = {6, 1, 5};
+vector<vector<int>> people = {Alice, Bob, Charlie};
+//2D vector of people
 
 int checkMatch(std::string string_l[], std::string check) {
     for (int i = 0; i < sizeof(string_l); i++) {
@@ -35,34 +39,27 @@ int checkMatch(std::string string_l[], std::string check) {
     return -1;
 }
 
-int findDiff(int values[], int count[]) {
+int findDiff(vector<int> values, vector<int> count) {
     int result = 0;
-    for (int i = 0; i < sizeof(values); i++) {
-        result += abs(values[i] - count[i]);
+    for (int i = 0; i < values.size(); i++) {
+        int diff = values[i] - count[i];
+        //cout << "count: " << count[i] << endl;
+        result += std::abs(diff);
     }
     return result;
 }
 
-std::string findMatch() {
-    return NULL;
-}
-
-int main() {
-    //first test should be Alice
-    std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
-    //std::string test = "AACCCTGCGCGCGCGCGATCTATCTATCTATCTATCCAGCATTAGCTAGCATCAAGATAGATAGATGAATTTCGAAATGAATGAATGAATGAATGAATGAATG";
-    int count[] = {0, 0, 0};
-    int a_diff, b_diff, c_diff = 0;
-
+vector<int> findCount(std::string DNA) {
     std::string temp = "";
-    
-    int prev = -1;
-    int max = 0;
+    std::vector<int> count = {0, 0, 0};
+    //max is one as if it finds the first instance, it does not count it as the prev is not the same
+    int max = 1;
     int same = 0;
+    int prev = -1;
     for (int j = 0; j < 4; j++) {
-        for (int i = j; i < (int)test.length(); i+=4) {
+        for (int i = j; i < (int)DNA.length(); i+=4) {
             temp = "";
-            temp = test.substr(i, 4);
+            temp = DNA.substr(i, 4);
             same = checkMatch(str_list, temp);
             if (prev == same && prev > -1) {
                 max++;
@@ -70,25 +67,39 @@ int main() {
                     count[same] = max;
                 }
             } else {
-                max = 0;
+                max = 1;
             }
             //std::cout << same << std::endl;
             prev = same;
         }
     }
+    return count;
+}
+
+std::string findMatch(vector<int> count) {
+    int a_diff = 0;
+    int b_diff = 0;
+    int c_diff = 0;
+
     a_diff = findDiff(Alice, count);
     b_diff = findDiff(Bob, count);
     c_diff = findDiff(Charlie, count);
-    if (a_diff < b_diff && a_diff < c_diff) {
+    if (a_diff == 0) {
         cout << "Alice" << endl;
-    } else if (b_diff < a_diff && b_diff < c_diff) {
+    } else if (b_diff == 0) {
         cout << "Bob" << endl;
-    } else {
+    } else if (c_diff == 0) {
         cout << "Charlie" << endl;
+    } else {
+        cout << "No Match" << endl;
     }
+}
 
-    for (int i = 0; i < 3; i++) {
-        std::cout << count[i] << std::endl;
-    }  
+int main() {
+    //first test should be Alice
+    //std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
+    std::string test = "AACCCTGCGCGCGCGCGATCTATCTATCTATCTATCCAGCATTAGCTAGCATCAAGATAGATAGATGAATTTCGAAATGAATGAATGAATGAATGAATGAATG";
+    std::vector<int> count = findCount(test);
+    findMatch(count); 
     return 0; 
 }

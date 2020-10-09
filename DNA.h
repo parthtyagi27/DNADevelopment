@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 
-namespace DNA {
-
-}
+class DNA {
+    private:
+        std::vector<std::string> DNA_strands;
+    public:
+        std::vector<std::string> get_DNA_strands();
+};
