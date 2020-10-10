@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "DNA.h"
+#include "People.h"
 #include <vector>
 
 using std::cout;

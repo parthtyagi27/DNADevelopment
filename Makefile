@@ -15,10 +15,10 @@ $(EXENAME): run.o DNA.o People.o
 run.o : run.cpp DNA.h People.h
 	$(CXX) $(CXXFLAGS) run.cpp
 
-DNA.o : run.cpp DNA.h
+DNA.o : DNA.cpp DNA.h
 	$(CXX) $(CXXFLAGS) DNA.cpp
 
-People.o : People.cpp DNA.h run.cpp DNA.o
+People.o : People.cpp People.h
 	$(CXX) $(CXXFLAGS) People.cpp
 
 test: catchmain.o tests.o DNA.o People.o

@@ -3,7 +3,15 @@
 
 class DNA {
     private:
-        std::vector<std::string> DNA_strands;
+        std::string DNA_strand;
+        std::string owner;
     public:
-        std::vector<std::string> get_DNA_strands();
+        DNA();
+        DNA(std::string strand, std::string name);
+        std::string getDNAStrand();
+        void setOwner(std::string person);
+        std::string getOwner();
+        std::vector<int> findCount();
+        int checkMatch(std::vector<std::string> string_list, std::string check);
+        
 };
