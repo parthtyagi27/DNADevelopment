@@ -5,6 +5,7 @@ class DNA {
     private:
         std::string DNA_strand;
         std::string owner;
+        std::vector<std::string> match_list;
     public:
         DNA();
         DNA(std::string strand, std::string name);

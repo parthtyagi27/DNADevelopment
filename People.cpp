@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 
+using std::cout;
+using std::endl;
+
 People::People() {
 
 }
@@ -40,4 +43,32 @@ std::string People::getName(int index) {
     return names[index];
 }
 
+int People::findDiff(std::vector<int> values, std::vector<int> count) {
+    int result = 0;
+    for (int i = 0; i < values.size(); i++) {
+        int diff = values[i] - count[i];
+        //cout << "count: " << count[i] << endl;
+        result += std::abs(diff);
+    }
+    return result;
+}
+
+std::string findMatch(std::vector<int> count) {
+    int a_diff = 0;
+    int b_diff = 0;
+    int c_diff = 0;
+
+    // a_diff = findDiff(Alice, count);
+    // b_diff = findDiff(Bob, count);
+    // c_diff = findDiff(Charlie, count);
+    if (a_diff == 0) {
+        cout << "Alice" << endl;
+    } else if (b_diff == 0) {
+        cout << "Bob" << endl;
+    } else if (c_diff == 0) {
+        cout << "Charlie" << endl;
+    } else {
+        cout << "No Match" << endl;
+    }
+}
 
