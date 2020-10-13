@@ -17,7 +17,7 @@ class People {
         
 
         std::vector<DNA> getStrands();
-        void addStrand(std::string dna, std::string owner);
+        void addStrand(std::string dna, std::string owner, std::vector<std::string> list);
         void addStrand(DNA add);
         void addPeople(std::vector<int> person, std::string name);
         std::vector<std::vector<int>> getPeople();

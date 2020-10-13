@@ -6,9 +6,10 @@ DNA::DNA() {
 
 }
 
-DNA::DNA(std::string strand, std::string name) {
+DNA::DNA(std::string strand, std::string name, std::vector<std::string> list) {
     DNA_strand = strand;
     owner = name;
+    match_list = list;
 }
 
 
@@ -22,6 +23,10 @@ void DNA::setOwner(std::string person) {
 
 std::string DNA::getOwner() {
     return owner;
+}
+
+void DNA::setMatchList(std::vector<std::string> list) {
+    match_list = list;
 }
 
 std::vector<int> DNA::findCount() {
@@ -49,4 +54,13 @@ std::vector<int> DNA::findCount() {
         }
     }
     return count;
+}
+
+int DNA::checkMatch(std::vector<std::string> string_list, std::string check) {
+    for (int i = 0; i < sizeof(string_list); i++) {
+        if (check == string_list[i]) {
+            return i;
+        }
+    }
+    return -1;
 }

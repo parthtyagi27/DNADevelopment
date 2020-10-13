@@ -21,8 +21,8 @@ std::vector<DNA> People::getStrands() {
     return strands;
 }
 
-void People::addStrand(std::string dna, std::string owner) {
-    DNA add(dna, owner);
+void People::addStrand(std::string dna, std::string owner, std::vector<std::string> list) {
+    DNA add(dna, owner ,list);
     strands.push_back(add);
 }
 
@@ -53,7 +53,7 @@ int People::findDiff(std::vector<int> values, std::vector<int> count) {
     return result;
 }
 
-std::string findMatch(std::vector<int> count) {
+std::string People::findMatch(std::vector<int> count) {
     int a_diff = 0;
     int b_diff = 0;
     int c_diff = 0;
