@@ -98,8 +98,8 @@ vector<vector<int>> people = {Alice, Bob, Charlie};
 
 int main() {
     //first test should be Alice
-    //std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
-    std::string test = "AACCCTGCGCGCGCGCGATCTATCTATCTATCTATCCAGCATTAGCTAGCATCAAGATAGATAGATGAATTTCGAAATGAATGAATGAATGAATGAATGAATG";
+    std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
+    //std::string test = "AACCCTGCGCGCGCGCGATCTATCTATCTATCTATCCAGCATTAGCTAGCATCAAGATAGATAGATGAATTTCGAAATGAATGAATGAATGAATGAATGAATG";
     DNA trial(test, "", str_list);
     std::vector<std::vector<int>> p_list = {Alice, Bob, Charlie};
     std::vector<std::string> n_list = {"Alice", "Bob", "Charlie"};
@@ -107,6 +107,6 @@ int main() {
     People first(s_list, p_list, n_list);
     //trial.setMatchList(str_list);
     std::vector<int> count = trial.findCount();
-    first.findMatch(count); 
+    cout << first.findMatch(count) << endl; 
     return 0; 
 }

@@ -54,21 +54,11 @@ int People::findDiff(std::vector<int> values, std::vector<int> count) {
 }
 
 std::string People::findMatch(std::vector<int> count) {
-    int a_diff = 0;
-    int b_diff = 0;
-    int c_diff = 0;
-
-    // a_diff = findDiff(Alice, count);
-    // b_diff = findDiff(Bob, count);
-    // c_diff = findDiff(Charlie, count);
-    if (a_diff == 0) {
-        cout << "Alice" << endl;
-    } else if (b_diff == 0) {
-        cout << "Bob" << endl;
-    } else if (c_diff == 0) {
-        cout << "Charlie" << endl;
-    } else {
-        cout << "No Match" << endl;
+    for (int i = 0; i < people.size(); i++) {
+        if (findDiff(people[i], count) == 0) {
+            return names[i];
+        }
     }
+    return "No Match";
 }
 
