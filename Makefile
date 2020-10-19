@@ -9,10 +9,10 @@ LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
 all : $(EXENAME)
 
-$(EXENAME): run.o DNA.o People.o
-	$(LD) run.o DNA.o People.o $(LDFLAGS) -o $(EXENAME)
+$(EXENAME): run.o DNA.o People.o Analysis.o
+	$(LD) run.o DNA.o People.o Analysis.o $(LDFLAGS) -o $(EXENAME)
 
-run.o : run.cpp DNA.h People.h
+run.o : run.cpp DNA.h People.h Analysis.h
 	$(CXX) $(CXXFLAGS) run.cpp
 
 DNA.o : DNA.cpp DNA.h
@@ -21,8 +21,11 @@ DNA.o : DNA.cpp DNA.h
 People.o : People.cpp People.h
 	$(CXX) $(CXXFLAGS) People.cpp
 
-test: catchmain.o tests.o DNA.o People.o
-	$(LD) catchmain.o tests.o DNA.o People.o $(LDFLAGS) -o test
+Analysis.o : Analysis.cpp Analysis.h
+	$(CXX) $(CXXFLAGS) Analysis.cpp
+
+test: catchmain.o tests.o DNA.o People.o Analysis.o
+	$(LD) catchmain.o tests.o DNA.o People.o Analysis.o $(LDFLAGS) -o test
 
 catchmain.o : catch/catchmain.cpp catch/catch.hpp
 	$(CXX) $(CXXFLAGS) catch/catchmain.cpp

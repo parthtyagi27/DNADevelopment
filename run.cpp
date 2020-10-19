@@ -2,6 +2,7 @@
 #include <cmath>
 #include "DNA.h"
 #include "People.h"
+#include "Analysis.h"
 #include <vector>
 
 using std::cout;
