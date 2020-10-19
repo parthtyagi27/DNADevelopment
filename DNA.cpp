@@ -29,6 +29,10 @@ void DNA::setMatchList(std::vector<std::string> list) {
     match_list = list;
 }
 
+std::vector<std::string> DNA::getMatchList() {
+    return match_list;
+}
+
 std::vector<int> DNA::findCount() {
     std::string temp = "";
     std::vector<int> count = {0, 0, 0};
