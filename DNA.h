@@ -15,7 +15,5 @@ class DNA {
         std::string getOwner();
         void setMatchList(std::vector<std::string> list);
         std::vector<std::string> getMatchList();
-        std::vector<int> findCount();
-        int checkMatch(std::vector<std::string> string_list, std::string check);
         
 };

@@ -10,7 +10,7 @@ Analysis::Analysis(People p) {
 
 int Analysis::findDiff(std::vector<int> values, std::vector<int> count) {
     int result = 0;
-    for (int i = 0; i < values.size(); i++) {
+    for (int i = 0; i < (int)values.size(); i++) {
         int diff = values[i] - count[i];
         //cout << "count: " << count[i] << endl;
         result += std::abs(diff);
@@ -20,7 +20,7 @@ int Analysis::findDiff(std::vector<int> values, std::vector<int> count) {
 
 std::string Analysis::findMatch(std::vector<int> count) {
     std::vector<std::vector<int>> p_list = people.getPeople();
-    for (int i = 0; i < p_list.size(); i++) {
+    for (int i = 0; i < (int)p_list.size(); i++) {
         if (findDiff(p_list[i], count) == 0) {
             return people.getName(i);
         }
@@ -57,7 +57,7 @@ std::vector<int> Analysis::findCount(DNA strand) {
 }
 
 int Analysis::checkMatch(std::vector<std::string> string_list, std::string check) {
-    for (int i = 0; i < sizeof(string_list); i++) {
+    for (int i = 0; i < (int)sizeof(string_list); i++) {
         if (check == string_list[i]) {
             return i;
         }

@@ -22,6 +22,5 @@ class People {
         void addPeople(std::vector<int> person, std::string name);
         std::vector<std::vector<int>> getPeople();
         std::string getName(int index);
-        int findDiff(std::vector<int> values, std::vector<int> count);
-        std::string findMatch(std::vector<int> count);
+        
 };

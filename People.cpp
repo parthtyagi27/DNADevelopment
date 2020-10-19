@@ -42,23 +42,3 @@ std::vector<std::vector<int>> People::getPeople() {
 std::string People::getName(int index) {
     return names[index];
 }
-
-int People::findDiff(std::vector<int> values, std::vector<int> count) {
-    int result = 0;
-    for (int i = 0; i < values.size(); i++) {
-        int diff = values[i] - count[i];
-        //cout << "count: " << count[i] << endl;
-        result += std::abs(diff);
-    }
-    return result;
-}
-
-std::string People::findMatch(std::vector<int> count) {
-    for (int i = 0; i < people.size(); i++) {
-        if (findDiff(people[i], count) == 0) {
-            return names[i];
-        }
-    }
-    return "No Match";
-}
-
