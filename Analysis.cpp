@@ -12,7 +12,6 @@ int Analysis::findDiff(std::vector<int> values, std::vector<int> count) {
     int result = 0;
     for (int i = 0; i < (int)values.size(); i++) {
         int diff = values[i] - count[i];
-        //cout << "count: " << count[i] << endl;
         result += std::abs(diff);
     }
     return result;
@@ -41,15 +40,16 @@ std::vector<int> Analysis::findCount(DNA strand) {
             temp = "";
             temp = strand_s.substr(i, 4);
             same = checkMatch(strand.getMatchList(), temp);
-            if (prev == same && prev > -1) {
-                max++;
-                if (count[same] < max) {
+            if (same > -1) {
+                if (prev == same) {
+                    max++;
+                }
+                if (count[same] <= max) {
                     count[same] = max;
                 }
             } else {
                 max = 1;
             }
-            //std::cout << same << std::endl;
             prev = same;
         }
     }

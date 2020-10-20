@@ -5,14 +5,11 @@
 class DNA {
     private:
         std::string DNA_strand;
-        std::string owner;
         std::vector<std::string> match_list;
     public:
         DNA();
-        DNA(std::string strand, std::string name, std::vector<std::string> list);
+        DNA(std::string strand, std::vector<std::string> list);
         std::string getDNAStrand();
-        void setOwner(std::string person);
-        std::string getOwner();
         void setMatchList(std::vector<std::string> list);
         std::vector<std::string> getMatchList();
         

@@ -21,8 +21,8 @@ std::vector<DNA> People::getStrands() {
     return strands;
 }
 
-void People::addStrand(std::string dna, std::string owner, std::vector<std::string> list) {
-    DNA add(dna, owner ,list);
+void People::addStrand(std::string dna, std::vector<std::string> list) {
+    DNA add(dna,list);
     strands.push_back(add);
 }
 
