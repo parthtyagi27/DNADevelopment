@@ -30,7 +30,7 @@ test: catchmain.o tests.o DNA.o People.o Analysis.o
 catchmain.o : catch/catchmain.cc catch/catch.hpp
 	$(CXX) $(CXXFLAGS) catch/catchmain.cc
 
-tests.o : tests/tests.cc catch/catch.hpp main.cc
+tests.o : tests/tests.cc catch/catch.hpp src/main.cc
 	$(CXX) $(CXXFLAGS) tests/tests.cc
 
 clean:
