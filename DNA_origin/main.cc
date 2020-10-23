@@ -33,9 +33,7 @@ vector<vector<int>> people = {Alice, Bob, Charlie};
 //2D vector of people
 
 int main() {
-    //first test should be Charlie
-    std::string test = "TATTGCCGTGTCTCTTAAGCCTGATCTTCGGCTCGGAAAGATACG";
-    //std::string test = "AACCCTGCGCGCGCGCGATCTATCTATCTATCTATCCAGCATTAGCTAGCATCAAGATAGATAGATGAATTTCGAAATGAATGAATGAATGAATGAATGAATG";
+    std::string test = "CGTAGATTAATTAATTAATTAATTAATTAATTAATTAATTACCACTCAGGAACATAGGATTGTGG";
     std::vector<std::string> str_list = {"ATTA", "AGTC", "AAGC"};
     DNA trial(test, str_list);
     std::vector<std::vector<int>> p_list = {Alice, Bob, Charlie};

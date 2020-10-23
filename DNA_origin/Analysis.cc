@@ -57,7 +57,7 @@ std::vector<int> Analysis::findCount(DNA strand) {
 }
 
 int Analysis::checkMatch(std::vector<std::string> string_list, std::string check) {
-    for (int i = 0; i < (int)sizeof(string_list); i++) {
+    for (int i = 0; i < (int)string_list.size(); i++) {
         if (check == string_list[i]) {
             return i;
         }
