@@ -12,17 +12,17 @@ all : $(EXENAME)
 $(EXENAME): main.o DNA.o People.o Analysis.o
 	$(LD) main.o DNA.o People.o Analysis.o $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cc DNA.h People.h Analysis.h
-	$(CXX) $(CXXFLAGS) main.cc
+main.o : src/main.cc includes/DNA.h includes/People.h includes/Analysis.h
+	$(CXX) $(CXXFLAGS) src/main.cc
 
-DNA.o : DNA.cc DNA.h
-	$(CXX) $(CXXFLAGS) DNA.cc
+DNA.o : src/DNA.cc includes/DNA.h
+	$(CXX) $(CXXFLAGS) src/DNA.cc
 
-People.o : People.cc People.h
-	$(CXX) $(CXXFLAGS) People.cc
+People.o : src/People.cc includes/People.h
+	$(CXX) $(CXXFLAGS) src/People.cc
 
-Analysis.o : Analysis.cc Analysis.h
-	$(CXX) $(CXXFLAGS) Analysis.cc
+Analysis.o : src/Analysis.cc includes/Analysis.h
+	$(CXX) $(CXXFLAGS) src/Analysis.cc
 
 test: catchmain.o tests.o DNA.o People.o Analysis.o
 	$(LD) catchmain.o tests.o DNA.o People.o Analysis.o $(LDFLAGS) -o test

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DNA.h"
+#include "../includes/DNA.h"
 #include <vector>
 
 DNA::DNA() {

@@ -1,5 +1,5 @@
-#include "People.h"
-#include "DNA.h"
+#include "../includes/People.h"
+#include "../includes/DNA.h"
 #include <iostream>
 #include <vector>
 #include <string>

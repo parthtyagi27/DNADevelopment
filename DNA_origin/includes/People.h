@@ -3,11 +3,9 @@
 #include <iostream>
 #include <vector>
 
+//std::vector<std::maps<string,int>> str_to_count;
+
 class People {
-    private:
-        std::vector<DNA> strands;
-        std::vector<std::string> names;
-        std::vector<std::vector<int>> people;
     public:
         /**
          * Constructors
@@ -22,5 +20,10 @@ class People {
         void addPeople(std::vector<int> person, std::string name);
         std::vector<std::vector<int>> getPeople();
         std::string getName(int index);
+        
+    private:
+        std::vector<DNA> strands;
+        std::vector<std::string> names;
+        std::vector<std::vector<int>> people;
         
 };

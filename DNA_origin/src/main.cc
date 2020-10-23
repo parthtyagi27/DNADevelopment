@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
-#include "DNA.h"
-#include "People.h"
-#include "Analysis.h"
+#include "../includes/DNA.h"
+#include "../includes/People.h"
+#include "../includes/Analysis.h"
 #include <vector>
 
 using std::cout;
@@ -33,11 +33,11 @@ vector<vector<int>> people = {Alice, Bob, Charlie};
 //2D vector of people
 
 int main() {
-    std::string test = "CGTAGATTAATTAATTAATTAATTAATTAATTAATTAATTACCACTCAGGAACATAGGATTGTGG";
-    std::vector<std::string> str_list = {"ATTA", "AGTC", "AAGC"};
+    std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
+    std::vector<std::string> str_list = {"AGAT", "AATG", "TATC"};
     DNA trial(test, str_list);
     std::vector<std::vector<int>> p_list = {Alice, Bob, Charlie};
-    std::vector<std::string> n_list = {"Alice", "Bob", "Charlie"};
+    std::vector<std::string> n_list = {"Michael", "Reese", "Nathan"};
     std::vector<DNA> s_list = {trial};
     People first(s_list, p_list, n_list);
     Analysis go = (first);
