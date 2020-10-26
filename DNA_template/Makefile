@@ -1,4 +1,4 @@
-EXENAME = run
+EXENAME = main
 
 CXX = clang++
 CXXFLAGS = -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -9,31 +9,29 @@ LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
 all : $(EXENAME)
 
-$(EXENAME): run.o DNA.o People.o Analysis.o
-	$(LD) run.o DNA.o People.o Analysis.o $(LDFLAGS) -o $(EXENAME)
+$(EXENAME): main.o DNA.o People.o Analysis.o
+	$(LD) main.o DNA.o People.o Analysis.o $(LDFLAGS) -o $(EXENAME)
 
-run.o : run.cpp DNA.h People.h Analysis.h
-	$(CXX) $(CXXFLAGS) run.cpp
+main.o : main.cc DNA.h People.h Analysis.h
+	$(CXX) $(CXXFLAGS) main.cc
 
-DNA.o : DNA.cpp DNA.h
-	$(CXX) $(CXXFLAGS) DNA.cpp
+DNA.o : DNA.cc DNA.h
+	$(CXX) $(CXXFLAGS) DNA.cc
 
-People.o : People.cpp People.h
-	$(CXX) $(CXXFLAGS) People.cpp
+People.o : People.cc People.h
+	$(CXX) $(CXXFLAGS) People.cc
 
-Analysis.o : Analysis.cpp Analysis.h
-	$(CXX) $(CXXFLAGS) Analysis.cpp
+Analysis.o : Analysis.cc Analysis.h
+	$(CXX) $(CXXFLAGS) Analysis.cc
 
 test: catchmain.o tests.o DNA.o People.o Analysis.o
 	$(LD) catchmain.o tests.o DNA.o People.o Analysis.o $(LDFLAGS) -o test
 
-catchmain.o : catch/catchmain.cpp catch/catch.hpp
-	$(CXX) $(CXXFLAGS) catch/catchmain.cpp
+catchmain.o : catch/catchmain.cc catch/catch.hpp
+	$(CXX) $(CXXFLAGS) catch/catchmain.cc
 
-tests.o : tests/tests.cpp catch/catch.hpp run.cpp
-	$(CXX) $(CXXFLAGS) tests/tests.cpp
+tests.o : tests/tests.cc catch/catch.hpp main.cc
+	$(CXX) $(CXXFLAGS) tests/tests.cc
 
 clean:
 	rm -f *.o $(EXENAME) test
-
-	
