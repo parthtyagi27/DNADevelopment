@@ -32,8 +32,9 @@ vector<int> Charlie = {6, 1, 5};
 vector<vector<int>> people = {Alice, Bob, Charlie};
 //2D vector of people
 
-int main() {
-    std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
+int main(int argc, char ** argv) {
+    std::string test = argv[1];
+    cout << test << endl;
     std::vector<std::string> str_list = {"AGAT", "AATG", "TATC"};
     DNA trial(test, str_list);
     std::vector<std::vector<int>> p_list = {Alice, Bob, Charlie};
