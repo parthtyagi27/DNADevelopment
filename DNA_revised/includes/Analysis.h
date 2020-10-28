@@ -1,10 +1,10 @@
 #pragma once
 #include "DNA.h"
 #include "Person.h"
+#include <vector>
 
 class Analysis {
     public:
-        Analysis();
         Analysis();
 
         int findDiff(std::vector<int> values, std::vector<int> count);
