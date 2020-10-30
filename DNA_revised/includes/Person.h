@@ -1,15 +1,14 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 #include <map>
-
-using namespace std;
 
 class Person {
     public:
-        Person(map<string, int> v, string name);
-        string getName();
-        map<string, int> getValues();
+        Person(std::map<std::string, int> v, std::string name);
+        std::string get_name();
+        std::map<std::string, int> get_values();
     private:
-        map<string, int> values;
-        string name;
+        std::map<std::string, int> str_map;
+        std::string name;
 };

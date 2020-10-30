@@ -1,18 +1,21 @@
 #pragma once
 #include "DNA.h"
 #include "Person.h"
+#include <iostream>
+#include <vector>
+#include <map>
 
 class Analysis {
     public:
-        Analysis();
-        Analysis();
+        Analysis(std::vector<Person> given_people);
 
-        int findDiff(std::vector<int> values, std::vector<int> count);
-        std::string findMatch(std::vector<int> count);
-        std::vector<int> findCount(DNA strand);
-        int checkMatch(std::vector<std::string> string_list, std::string check);
+        int find_diff(Person person, std::vector<int> count);
+        std::string find_match(std::vector<int> count);
+        std::vector<int> find_count(DNA strand);
+        int check_match(std::vector<std::string> string_list, std::string check);
         
     private:
-
-
+        std::vector<Person> people;
+        DNA input_sequence; 
+        std::vector<std::string> strs;
 };
