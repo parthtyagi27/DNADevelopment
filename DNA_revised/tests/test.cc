@@ -15,3 +15,4 @@ TEST_CASE("Find Michael 1", "[weight=1]") {
     std::cout << analyze.find_count(test)[0];
     REQUIRE(2==2);
 }
+

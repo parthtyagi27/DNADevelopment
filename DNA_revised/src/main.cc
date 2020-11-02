@@ -50,8 +50,8 @@ int main(int argc, char * argv[]) {
     input_file.close();
     std::vector<Person> people;
     Analysis analyze(people);
-    std::vector<int> test = analyze.find_count(argv[2]);
-    std::cout << test[0];
+    std::map<std::string, int> test = analyze.find_count(argv[2]);
+    //std::cout << test.find([""]);
     // std::unordered_map<std::string, int> parth_map;
     // parth_map.insert(std::pair<std::string, int>("AGAT", 3));
     // Person parth = Person(parth_map, "Parth");
