@@ -5,6 +5,7 @@
 
 class Person {
     public:
+        Person();
         Person(std::map<std::string, int> v, std::string name);
         std::string get_name();
         std::map<std::string, int> get_values();

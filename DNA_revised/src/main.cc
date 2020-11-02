@@ -35,20 +35,23 @@ int main(int argc, char * argv[]) {
     std::vector<std::string> strs;
     strs.assign(attributes.begin() + 1, attributes.end());
     
-
+    Person p;
     while (std::getline(input_file, line)) {
 
         std::vector<std::string> values = split_line(line, ',');
         std::map<std::string, int> map;
         for (size_t i = 1; i < values.size(); i++)
             map.insert(std::pair<std::string, int>(attributes[i], std::stoi(values[i])));
-        Person p = Person(map, values[0]);
+        p = Person(map, values[0]);
         for (auto it = map.begin(); it != map.end(); ++it)
             std::cout << (*it).first << " , " << (*it).second << "\n";
     }
 
     input_file.close();
-
+    std::vector<Person> people;
+    Analysis analyze(people);
+    std::vector<int> test = analyze.find_count(argv[2]);
+    std::cout << test[0];
     // std::unordered_map<std::string, int> parth_map;
     // parth_map.insert(std::pair<std::string, int>("AGAT", 3));
     // Person parth = Person(parth_map, "Parth");

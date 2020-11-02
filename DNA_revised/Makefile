@@ -24,14 +24,14 @@ Person.o : src/Person.cc includes/Person.h
 Analysis.o : src/Analysis.cc includes/Analysis.h
 	$(CXX) $(CXXFLAGS) src/Analysis.cc
 
-test: catchmain.o tests.o DNA.o Person.o Analysis.o
-	$(LD) catchmain.o tests.o DNA.o Person.o Analysis.o $(LDFLAGS) -o test
+test: catchmain.o test.o DNA.o Person.o Analysis.o
+	$(LD) catchmain.o test.o DNA.o Person.o Analysis.o $(LDFLAGS) -o test
 
 catchmain.o : tests/catchmain.cc tests/catch.hpp
 	$(CXX) $(CXXFLAGS) tests/catchmain.cc
 
-tests.o : tests/tests.cc tests/catch.hpp src/main.cc
-	$(CXX) $(CXXFLAGS) tests/tests.cc
+test.o : tests/test.cc tests/catch.hpp src/main.cc
+	$(CXX) $(CXXFLAGS) tests/test.cc
 
 clean:
 	rm -f *.o $(EXENAME) test
