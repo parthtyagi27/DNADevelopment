@@ -9,11 +9,14 @@ LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
 all : $(EXENAME)
 
-$(EXENAME): main.o DNA.o Person.o Analysis.o
-	$(LD) main.o DNA.o Person.o Analysis.o $(LDFLAGS) -o $(EXENAME)
+$(EXENAME): main.o DNA.o Person.o Analysis.o CSVReader.o
+	$(LD) main.o DNA.o Person.o Analysis.o CSVReader.o $(LDFLAGS) -o $(EXENAME)
 
-main.o : src/main.cc includes/DNA.h includes/Person.h includes/Analysis.h
+main.o : src/main.cc includes/DNA.h includes/Person.h includes/Analysis.h includes/CSVReader.h
 	$(CXX) $(CXXFLAGS) src/main.cc
+
+CSVReader.o: src/CSVReader.cc includes/CSVReader.h
+	$(CXX) $(CXXFLAGS) src/CSVReader.cc
 
 DNA.o : src/DNA.cc includes/DNA.h
 	$(CXX) $(CXXFLAGS) src/DNA.cc
