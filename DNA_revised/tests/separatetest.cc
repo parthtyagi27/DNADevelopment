@@ -132,6 +132,59 @@ TEST_CASE("Analysis -- check_match return -1 on no match", "[weight=1]") {
     REQUIRE(analysis.check_match(strs, "AAAA") == -1);
 }
 
+TEST_CASE("Analysis -- find_match return works 1", "[weight=1]") {
+    std::vector<Person> result = CSVReader::process_file("tests/tests_part1_1.csv");
+    std::map<std::string, int> map;
+    map["AGTC"] = 2;
+    map["TGCA"] = 4;
+    map["TGCT"] = 6;
+    map["GCAT"] = 8;
+    map["GGAT"] = 10;
+    REQUIRE(Analysis(result).find_match(map) == "Daniel");
+}
+
+TEST_CASE("Analysis -- find_match return works 2", "[weight=1]") {
+    std::vector<Person> result = CSVReader::process_file("tests/tests_part1_2.csv");
+    std::map<std::string, int> map;
+    map["AGTC"] = 5;
+    map["TGCA"] = 10;
+    map["TGCT"] = 15;
+    map["GCAT"] = 20;
+    map["GGAT"] = 25;
+    map["CCAT"] = 30;
+    map["CGAT"] = 35;
+    map["ATGG"] = 40;
+    map["ATCG"] = 45;
+    map["CCCC"] = 50;
+    map["AAAG"] = 55;
+    map["TTGA"] = 60;
+    map["TCTC"] = 65;
+    map["CAAT"] = 70;
+    map["AATC"] = 75;
+    REQUIRE(Analysis(result).find_match(map) == "Ben");
+}
+
+TEST_CASE("Analysis -- find_match return No Match", "[weight=1]") {
+    std::vector<Person> result = CSVReader::process_file("tests/tests_part1_2.csv");
+    std::map<std::string, int> map;
+    map["AGTC"] = 5;
+    map["TGCA"] = 10;
+    map["TGCT"] = 15;
+    map["GCAT"] = 20;
+    map["GGAT"] = 25;
+    map["CCAT"] = 30;
+    map["CGAT"] = 35;
+    map["ATGG"] = 40;
+    map["ATCG"] = 45;
+    map["CCCC"] = 50;
+    map["AAAG"] = 55;
+    map["TTGA"] = 60;
+    map["TCTC"] = 55;
+    map["CAAT"] = 70;
+    map["AATC"] = 75;
+    REQUIRE(Analysis(result).find_match(map) == "No Match");
+}
+
 TEST_CASE("Analysis -- basic find_count works", "[weight=1]") {
     std::vector<std::string> strs = {"ACAT", "AGAT", "CCGT", "TAGA", "GACG"};
     std::map<std::string, int> map;
