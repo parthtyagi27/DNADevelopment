@@ -23,12 +23,18 @@ Person CSVReader::get_person(std::string input_line, std::vector<std::string> st
 }
 
 std::vector<Person> CSVReader::process_file(std::string input_file_path) {
+    // Open the file for reading
     std::fstream input_file = std::fstream(input_file_path);
     std::string line;
     std::string attribute_line;
 
+    // Read the first line in the file 
     std::getline(input_file, attribute_line);
+
+    // Split the first line by commas
     std::vector<std::string> strs = split_line(attribute_line, ',');
+
+    // Erase the first element so we now have a vector of the STRS
     strs.erase(strs.begin());
     
     std::vector<Person> people;
@@ -36,5 +42,9 @@ std::vector<Person> CSVReader::process_file(std::string input_file_path) {
     while (std::getline(input_file, line)) {
         people.push_back(CSVReader::get_person(line, strs));
     }
+
+    // Close the file
+    input_file.close();
+    
     return people;
 }
