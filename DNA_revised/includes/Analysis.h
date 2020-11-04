@@ -45,6 +45,5 @@ class Analysis {
         
     private:
         std::vector<Person> people;
-        DNA input_sequence; 
         std::vector<std::string> strs;
 };
