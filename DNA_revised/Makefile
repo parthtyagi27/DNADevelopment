@@ -30,8 +30,8 @@ Analysis.o : src/Analysis.cc includes/Analysis.h
 test: catchmain.o test.o DNA.o Person.o Analysis.o
 	$(LD) catchmain.o test.o DNA.o Person.o Analysis.o $(LDFLAGS) -o test
 
-stest: catchmain.o separatetest.o DNA.o Person.o Analysis.o
-	$(LD) catchmain.o separatetest.o DNA.o Person.o Analysis.o $(LDFLAGS) -o stest
+stest: catchmain.o separatetest.o DNA.o Person.o Analysis.o CSVReader.o
+	$(LD) catchmain.o separatetest.o DNA.o Person.o Analysis.o CSVReader.o $(LDFLAGS) -o stest
 
 catchmain.o : tests/catchmain.cc tests/catch.hpp
 	$(CXX) $(CXXFLAGS) tests/catchmain.cc
