@@ -1,11 +1,14 @@
 #include "../includes/CSVReader.h"
 
-std::vector<std::string> CSVReader::split_line(std::string input, char delimiter) {
-    std::vector<std::string> data;
-    size_t pos = 0;
-    std::string token;
+using std::vector;
+using std::string;
 
-    while ((pos = input.find(delimiter)) != std::string::npos) {
+vector<string> CSVReader::split_line(string input, char delimiter) {
+    vector<string> data;
+    size_t pos = 0;
+    string token;
+
+    while ((pos = input.find(delimiter)) != string::npos) {
         token = input.substr(0, pos);
         data.push_back(token);
         input.erase(0, pos + 1);
