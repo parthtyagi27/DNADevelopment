@@ -53,6 +53,7 @@ int Analysis::check_match(std::vector<std::string> string_list, std::string chec
     }
     return -1;
 }
+
 bool Analysis::find_diff(Person person, std::map<std::string, int> count) {
     std::map<std::string, int> map = person.get_values();
     int index = 0;
@@ -66,11 +67,16 @@ bool Analysis::find_diff(Person person, std::map<std::string, int> count) {
 }
 
 std::string Analysis::find_match(std::map<std::string, int> count) {
+    std::string result = "No Match";
     for (size_t i = 0; i < people.size(); i++) {
         if (find_diff(people[i], count)) {
-            return people[i].get_name();
+            if (result == "No Match") {
+                result = people[i].get_name();
+            } else {
+                return "Ambiguous Match";
+            }
         }
     }
-    return "No Match";
+    return result;
 }
 

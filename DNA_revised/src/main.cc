@@ -1,6 +1,5 @@
 #include "../includes/Analysis.h"
 #include "../includes/Person.h"
-#include "../includes/DNA.h"
 #include "../includes/CSVReader.h"
 #include <iostream>
 #include <fstream>
@@ -57,4 +56,8 @@ int main(int argc, char * argv[]) {
         for (auto it = map.begin(); it != map.end(); ++it)
             std::cout << it->first << " , " << it->second << "\n";
     }
+
+    Analysis analyze(people);
+    std::map<std::string, int> count = analyze.find_count(argv[2]);
+    std::cout << analyze.find_match(count) << std::endl;
 }

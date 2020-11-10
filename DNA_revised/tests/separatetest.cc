@@ -1,5 +1,4 @@
 #include "catch.hpp"
-#include "../includes/DNA.h"
 #include "../includes/Analysis.h"
 #include "../includes/CSVReader.h"
 

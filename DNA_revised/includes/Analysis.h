@@ -1,5 +1,4 @@
 #pragma once
-#include "DNA.h"
 #include "Person.h"
 #include <iostream>
 #include <vector>
