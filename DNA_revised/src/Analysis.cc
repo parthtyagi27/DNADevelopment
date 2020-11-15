@@ -1,9 +1,9 @@
 #include "../includes/Analysis.h"
 
-Analysis::Analysis(std::vector<Person> given_people) {
+Analysis::Analysis(std::vector<Person> given_people, const std::string dna) {
 }
 
-std::map<std::string, int> Analysis::find_count(std::string strand) {
+std::map<std::string, int> Analysis::find_count() {
     for (std::string s : strs)
         std::cout << s << "\n";
 

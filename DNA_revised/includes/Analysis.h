@@ -10,7 +10,7 @@ class Analysis {
          *  Constructor for Analysis class
          * @param given_people A vector of people to analyze 
          */
-        Analysis(std::vector<Person> given_people);
+        Analysis(std::vector<Person> given_people, const std::string dna);
 
         /**
          * Check if the DNA map belongs to a particular person
@@ -32,7 +32,7 @@ class Analysis {
          * @param strand The string of DNA to analyze
          * @return a map of STRs and their occurences
          */
-        std::map<std::string, int> find_count(std::string strand);
+        std::map<std::string, int> find_count();
         
         /**
          * Find which index a particular string occurs in a vector
@@ -45,4 +45,5 @@ class Analysis {
     private:
         std::vector<Person> people;
         std::vector<std::string> strs;
+        std::string strand;
 };
