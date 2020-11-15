@@ -16,7 +16,7 @@ PersonCollector::PersonCollector(const std::string & filename) {
     
 
     while (std::getline(input_file, line)) {
-        person_vector.push_back(get_person(line, strs));
+        person_vector.push_back(create_person(line, strs));
     }
 
     // Close the file
@@ -27,7 +27,7 @@ std::vector<Person> PersonCollector::get_persons() const {
     return person_vector;
 }
 
-Person PersonCollector::get_person(std::string input_line, std::vector<std::string> strs) {
+Person PersonCollector::create_person(std::string input_line, std::vector<std::string> strs) {
     std::map<std::string, int> map;
     std::vector<std::string> values = split_line(input_line, ',');
     for (size_t i = 0; i < strs.size(); i++)
