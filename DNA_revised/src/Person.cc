@@ -7,10 +7,10 @@ Person::Person(std::map<std::string, int> v, std::string name) {
     this->name = name;
 }
 
-std::string Person::get_name() {
+std::string Person::get_name() const {
     return name;
 }
 
-std::map<std::string, int> Person::get_values() {
-    return str_map;
+int Person::get_values(std::string str) const {
+    return str_map.find(str)->second;
 }

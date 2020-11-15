@@ -1,5 +1,4 @@
 #include "catch.hpp"
-#include "../includes/DNA.h"
 #include "../includes/Analysis.h"
 
 TEST_CASE("Find Michael 1", "[weight=1]") {
@@ -182,5 +181,31 @@ TEST_CASE("Find Fake Nathan", "[weight=1]") {
     name = analyze.find_match(analyze.find_count(test));
     REQUIRE(name=="No Match");
     
+}
+
+TEST_CASE("Find Ambiguous", "[weight=1]") {
+    std::map<std::string, int> m_values;
+    m_values["AGAT"] = 5;
+    m_values["AATG"] = 2;
+    m_values["TATC"] = 8;
+    Person m(m_values, "Michael");
+
+    std::map<std::string, int> r_values;
+    r_values["AGAT"] = 5;
+    r_values["AATG"] = 2;
+    r_values["TATC"] = 8;
+    Person r(r_values, "Reese");
+
+    std::map<std::string, int> n_values;
+    n_values["AGAT"] = 6;
+    n_values["AATG"] = 1;
+    n_values["TATC"] = 5;
+    Person n(n_values, "Nathan");
+
+    std::vector<Person> people = {m, r, n};
+    std::string test = "AGACGGGTTACCATGACTATCTATCTATCTATCTATCTATCTATCTATCACGTACGTACGTATCGAGATAGATAGATAGATAGATCCTCGACTTCGATCGCAATGAATGCCAATAGACAAAA";
+    Analysis analyze(people);
+    std::string name = analyze.find_match(analyze.find_count(test));
+    REQUIRE(name=="Ambiguous Match");
 }
 

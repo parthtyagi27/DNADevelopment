@@ -1,13 +1,6 @@
 #include "../includes/Analysis.h"
 
 Analysis::Analysis(std::vector<Person> given_people) {
-    people = given_people;
-    if (!people.empty()) {
-        std::map<std::string, int> str_map = people[0].get_values();
-        auto it = str_map.begin();
-        for (; it != str_map.end(); ++it)
-            strs.push_back((*it).first);
-    }
 }
 
 std::map<std::string, int> Analysis::find_count(std::string strand) {
@@ -24,7 +17,7 @@ std::map<std::string, int> Analysis::find_count(std::string strand) {
     int max = 1;
     int same = 0;
     int prev = -1;
-    for (int j = 0; j < 4; j++) {
+    for (int j = 0; j < (int)strs[0].length(); j++) {
         for (int i = j; i < (int)strand.length(); i+=4) {
             temp = "";
             temp = strand.substr(i, 4);

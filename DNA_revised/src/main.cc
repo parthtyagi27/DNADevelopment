@@ -50,12 +50,12 @@ int main(int argc, char * argv[]) {
     // Analysis analyzer = Analysis(vec);
 
     std::vector<Person> people = CSVReader::process_file(argv[1]);
-    for (Person & p : people) {
-        std::cout << p.get_name() << "\n";\
-        std::map<std::string, int> map = p.get_values();
-        for (auto it = map.begin(); it != map.end(); ++it)
-            std::cout << it->first << " , " << it->second << "\n";
-    }
+    // for (Person & p : people) {
+    //     std::cout << p.get_name() << "\n";\
+    //     std::map<std::string, int> map = p.get_values();
+    //     for (auto it = map.begin(); it != map.end(); ++it)
+    //         std::cout << it->first << " , " << it->second << "\n";
+    // }
 
     Analysis analyze(people);
     std::map<std::string, int> count = analyze.find_count(argv[2]);
