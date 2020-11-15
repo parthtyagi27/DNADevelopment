@@ -1,6 +1,6 @@
 #include "../includes/Analysis.h"
 #include "../includes/Person.h"
-#include "../includes/CSVReader.h"
+#include "../includes/PersonCollector.h"
 #include <iostream>
 #include <fstream>
 #include <string>

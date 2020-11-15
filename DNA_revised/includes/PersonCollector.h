@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "includes/Person.h"
+#include "../includes/Person.h"
 
 class PersonCollector {
     public:

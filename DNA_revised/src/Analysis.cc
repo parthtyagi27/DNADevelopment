@@ -48,10 +48,9 @@ int Analysis::check_match(std::vector<std::string> string_list, std::string chec
 }
 
 bool Analysis::find_diff(Person person, std::map<std::string, int> count) {
-    std::map<std::string, int> map = person.get_values();
     int index = 0;
     for (size_t i = 0; i < strs.size(); i++) {
-        if (map.find(strs[i]) -> second != count.find(strs[i]) -> second) {
+        if (person.get_values(strs[i]) != count.find(strs[i]) -> second) {
             return false;
         }
         index++;

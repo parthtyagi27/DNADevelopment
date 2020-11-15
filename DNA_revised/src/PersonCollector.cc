@@ -1,4 +1,4 @@
-#include "includes/PersonCollector.h"
+#include "../includes/PersonCollector.h"
 
 PersonCollector::PersonCollector(const std::string & filename) {
     std::fstream input_file = std::fstream(filename);
