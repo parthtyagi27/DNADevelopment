@@ -1,6 +1,7 @@
 #pragma once
 #include "../includes/PersonCollector.h"
 #include "Person.h"
+#include "PersonCollector.h"
 #include <iostream>
 #include <vector>
 #include <map>

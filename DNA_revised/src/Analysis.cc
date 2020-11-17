@@ -56,6 +56,7 @@ bool Analysis::find_diff(Person person, std::map<std::string, int> count) {
     int index = 0;
     for (size_t i = 0; i < strs.size(); i++) {
         if (person.get_values(strs[i]) != count.find(strs[i])->second) {
+
             return false;
         }
         index++;
